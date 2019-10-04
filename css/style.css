@@ -1,0 +1,47 @@
+/* unvisited link */
+a:link {
+    color: rgb(0, 0, 0);
+}
+
+/* visited link */
+a:visited {
+    color: rgb(0, 0, 0);
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(0, 0, 0);
+}
+
+/* selected link */
+a:active {
+    color:rgb(0, 0, 0);
+}
+
+h1 {
+
+    display: block;
+    font-size: 40px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(2, 95, 33);
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: rgba(99, 235, 133, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+}
