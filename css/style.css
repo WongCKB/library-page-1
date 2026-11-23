@@ -15,33 +15,234 @@ a:hover {
 
 /* selected link */
 a:active {
-    color:rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 }
 
 h1 {
-
     display: block;
-    font-size: 40px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
     text-align: center;
-
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
     background-color: rgb(2, 95, 33);
-    padding: 10px;
+    padding: 12px;
+    box-sizing: border-box;
 }
 
 .grid-item {
     background-color: rgba(99, 235, 133, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 20px;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.grid-item p {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Tooltip / Popup Trigger Button */
+.info-btn {
+    background: transparent;
+    border: none;
+    padding: 6px 8px;
+    margin-left: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #034b1a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    vertical-align: middle;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+    min-width: 32px;
+    min-height: 32px;
+}
+
+.info-btn:hover,
+.info-btn:focus-visible {
+    color: #01290e;
+    background-color: rgba(0, 0, 0, 0.08);
+    outline: none;
+    transform: scale(1.12);
+}
+
+.info-btn:active {
+    transform: scale(0.95);
+}
+
+/* Modern HTML Popover Attribute Styling */
+[popover],
+[popup],
+.tooltip-popover {
+    border: none;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #212529;
+    padding: 0;
+    width: 90vw;
+    max-width: 480px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+    margin: auto;
+    font-family: inherit;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Top layer backdrop for popover */
+[popover]::backdrop,
+[popup]::backdrop,
+.tooltip-popover::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* Fallback for open state when polyfilled */
+.tooltip-popover.popover-open {
+    display: block !important;
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10000 !important;
+}
+
+.popover-backdrop-fallback {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+}
+
+/* Popover Content Structure */
+.popover-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background-color: #eaf6ed;
+    border-bottom: 1px solid #c9e6d0;
+}
+
+.popover-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(2, 95, 33);
+}
+
+.popover-close {
+    background: transparent;
+    border: none;
+    font-size: 26px;
+    line-height: 1;
+    color: #555555;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 4px;
+    touch-action: manipulation;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.popover-close:hover,
+.popover-close:focus {
+    color: #000000;
+    background-color: rgba(0, 0, 0, 0.08);
+    outline: none;
+}
+
+.popover-body {
+    padding: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+    text-align: left;
+    word-break: break-word;
+}
+
+.popover-body a {
+    color: #0b5394;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.popover-body a:hover {
+    color: #042f56;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .grid-item {
+        font-size: 16px;
+        padding: 14px 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    [popover],
+    [popup],
+    .tooltip-popover {
+        width: 92vw;
+        max-width: none;
+    }
+
+    .popover-header {
+        padding: 12px 14px;
+    }
+
+    .popover-title {
+        font-size: 16px;
+    }
+
+    .popover-body {
+        padding: 14px;
+        font-size: 14px;
+    }
 }
